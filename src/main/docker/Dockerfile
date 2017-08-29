@@ -17,12 +17,12 @@ RUN curl -LO http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4
 WORKDIR /opt/webserver
 RUN rm -Rf webapps/*
 RUN echo 'export JAVA_HOME=/usr/java/latest' >> bin/setenv.sh; \
-    chown root:jboss bin/setenv.sh; \
     chmod 755 bin/setenv.sh; \
     mkdir -p conf/Catalina/localhost; \
     chmod 775 conf/Catalina/localhost; \
+    touch conf/Catalina/localhost/ROOT.xml; \
+    chmod 775 conf/Catalina/localhost/ROOT.xml; \
     chmod -R 755 conf;
-
 
 WORKDIR /usr/local/src
 COPY ROOT.xml ROOT.xml
