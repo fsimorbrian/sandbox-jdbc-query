@@ -20,6 +20,8 @@ RUN echo 'export JAVA_HOME=/usr/java/latest' >> bin/setenv.sh; \
     chown root:jboss bin/setenv.sh; \
     chmod 755 bin/setenv.sh
 
+COPY ROOT.xml /usr/local/src/BRIAN.xml
+
 # above provides the configured platform
 # the war is copied later -- TBD
 # COPY jdbc-query.war /opt/webserver/webapps/ROOT.war
