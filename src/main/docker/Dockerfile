@@ -22,7 +22,7 @@ RUN echo 'export JAVA_HOME=/usr/java/latest' >> bin/setenv.sh; \
     chmod 755 bin/setenv.sh; \
     mkdir -p conf/Catalina/localhost; \
     chmod 775 conf/Catalina/localhost; \
-    chmod 775 conf/Catalina/localhost/ROOT.xml; \
+    chmod 777 conf/Catalina/localhost/ROOT.xml; \
     chmod -R 755 conf;
 
 WORKDIR /usr/local/src
