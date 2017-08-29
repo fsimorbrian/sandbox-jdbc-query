@@ -36,4 +36,5 @@ RUN chmod 755 launch_wrapper.sh; chmod 644 ROOT.xml; chmod 775 .
 # the war is copied later -- TBD
 # COPY jdbc-query.war /opt/webserver/webapps/ROOT.war
 
+USER jboss
 CMD /usr/local/src/launch_wrapper.sh
