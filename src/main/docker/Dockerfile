@@ -20,7 +20,10 @@ RUN echo 'export JAVA_HOME=/usr/java/latest' >> bin/setenv.sh; \
     chown root:jboss bin/setenv.sh; \
     chmod 755 bin/setenv.sh
 
-COPY ROOT.xml /usr/local/src/ROOT.xml
+WORKDIR /usr/local/src
+COPY ROOT.xml ROOT.xml
+COPY launch_wrapper.sh launch_wrapper.sh
+RUN chmod 755 launch_wrapper.sh; chmod 644 ROOT.xml
 
 
 # above provides the configured platform
