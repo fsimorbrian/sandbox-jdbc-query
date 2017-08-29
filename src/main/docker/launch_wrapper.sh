@@ -6,4 +6,6 @@ echo "Test in usr/local/src" > /usr/local/src/test1.txt
 
 echo "Test in /opt/webserver/conf/Catalina/localhost" > /opt/webserver/conf/Catalina/localhost/test2.txt
 
+echo "Script1" > /tmp/notes.txt
+
 /opt/webserver/bin/launch.sh
