@@ -2,15 +2,27 @@
 	<Resource name="DocumentDS"
 		  type="javax.sql.DataSource"
                   driverClassName="org.postgresql.Driver"
-                  url="jdbc:postgresql://${DB_SERVICE_NAME}:5432/${POSTGRESQL_DATABASE}"
-                  username="${POSTGRESQL_USER}"
-                  password="${POSTGRESQL_PASSWORD}"
+                  url="jdbc:postgresql://${DOC_DB_SERVICE_NAME}:5432/${DOC_POSTGRESQL_DATABASE}"
+                  username="${DOC_POSTGRESQL_USER}"
+                  password="${DOC_POSTGRESQL_PASSWORD}"
                   maxTotal="250"
                   maxIdle="20"
                   maxWaitMillis="30000"
                   defaultAutoCommit="false"
         />
+	<Resource name="ObjectDs"
+		type="javax.sql.DataSource"
+		driverClassName="org.postgresql.Driver"
+		url="jdbc:postgresql://${OBJ_DB_SERVICE_NAME}:5432/${OBJ_POSTGRESQL_DATABASE}"
+		username="${OBJ_POSTGRESQL_USER}"
+		password="${OBJ_POSTGRESQL_PASSWORD}"
+		maxTotal="250"
+		maxIdle="20"
+		maxWaitMillis="30000"
+		defaultAutoCommit="false"
+	/>
 	<ResourceLink name="DocumentDS" global="DocumentDS" type="javax.sql.DataSource" />
+	<ResourceLink name="ObjectDS" global="ObjectDS" type="javax.sql.DataSource" />
 </Context>
 
 
