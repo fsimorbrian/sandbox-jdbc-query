@@ -18,12 +18,17 @@ WORKDIR /opt/webserver
 RUN rm -Rf webapps/*
 RUN echo 'export JAVA_HOME=/usr/java/latest' >> bin/setenv.sh; \
     chown root:jboss bin/setenv.sh; \
-    chmod 755 bin/setenv.sh
+    chmod 755 bin/setenv.sh; \
+    mkdir conf/Catalina/localhost; \
+    chgrp jboss conf/Catalina/localhost; \
+    chmod 775 conf/Catalina/localhost; \
+    chmod -R 755 conf;
+
 
 WORKDIR /usr/local/src
 COPY ROOT.xml ROOT.xml
 COPY launch_wrapper.sh launch_wrapper.sh
-RUN chmod 755 launch_wrapper.sh; chmod 644 ROOT.xml
+RUN chmod 775 launch_wrapper.sh; chmod 644 ROOT.xml; chgrp jboss .; chmod 775 .
 
 
 # above provides the configured platform
