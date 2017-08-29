@@ -16,16 +16,17 @@ RUN curl -LO http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4
 
 # configure tomcat
 WORKDIR /opt/webserver
+COPY ROOT.xml /opt/webserver/conf/Catalina/localhost/
 RUN rm -Rf webapps/*
 RUN echo 'export JAVA_HOME=/usr/java/latest' >> bin/setenv.sh; \
     chmod 755 bin/setenv.sh; \
     mkdir -p conf/Catalina/localhost; \
     chmod 775 conf/Catalina/localhost; \
-    touch conf/Catalina/localhost/ROOT.xml; \
     chmod 775 conf/Catalina/localhost/ROOT.xml; \
     chmod -R 755 conf;
 
 WORKDIR /usr/local/src
+COPY variable_replace.py variable_replace.py
 COPY ROOT.xml ROOT.xml
 COPY launch_wrapper.sh launch_wrapper.sh
 RUN chmod 755 launch_wrapper.sh; chmod 644 ROOT.xml; chmod 775 .
