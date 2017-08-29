@@ -5,7 +5,7 @@
 #
 #echo "Test in usr/local/src" > /usr/local/src/test1.txt
 #
-#echo "Test in /opt/webserver/conf/Catalina/localhost" > /opt/webserver/conf/Catalina/localhost/test2.txt
+echo "Test in /opt/webserver/conf/Catalina/localhost" > /opt/webserver/conf/Catalina/localhost/test2.txt
 
 python /usr/local/src/variable_replace.py
 echo "Script1" > /tmp/notes.txt
