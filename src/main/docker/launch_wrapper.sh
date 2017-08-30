@@ -1,13 +1,15 @@
 #!/bin/bash
 
 
-#sed 's/\${DOC_DB_SERVICE_NAME}/AAABBBCCC/' /usr/local/src/ROOT.xml > /opt/webserver/conf/Catalina/localhost/ROOT.xml
+sed 's/\${DOC_DB_SERVICE_NAME}/AAABBBCCC/' /usr/local/src/ROOT.xml \
+| sed 's/\${DOC_POSTGRESQL_DATABASE}/XXXYYYZZ/' \
+> /opt/webserver/conf/Catalina/localhost/ROOT.xml
+
 #
 #echo "Test in usr/local/src" > /usr/local/src/test1.txt
 #
 echo "Test in /opt/webserver/conf/Catalina/localhost" > /opt/webserver/conf/Catalina/localhost/test2.txt
 
-python /usr/local/src/variable_replace.py
 echo "Script1" > /tmp/notes.txt
 
 /opt/webserver/bin/launch.sh
