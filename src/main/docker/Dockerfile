@@ -16,7 +16,7 @@ RUN curl -LO http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4
 # configure tomcat
 WORKDIR /opt/webserver
 RUN rm -Rf webapps/*; \
-    mkdir -p conf/Catalina/localhost;
+    mkdir -p conf/Catalina/localhost; \
     chmod 775 conf/Catalina/localhost; \
     echo 'export JAVA_HOME=/usr/java/latest' >> bin/setenv.sh; \
     chmod 755 bin/setenv.sh;
