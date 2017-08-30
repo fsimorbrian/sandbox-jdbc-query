@@ -18,18 +18,14 @@ WORKDIR /opt/webserver
 RUN rm -Rf webapps/*; \
     mkdir -p conf/Catalina/localhost; \
     chmod 775 conf/Catalina/localhost; \
-    echo 'export JAVA_HOME=/usr/java/latest' >> bin/setenv.sh; \
-    chmod 755 bin/setenv.sh;
+    COPY setenv.sh bin/
 
 WORKDIR /usr/local/src
 COPY ROOT.xml ROOT.xml
-ADD launch_wrapper.sh launch_wrapper.sh
-RUN chmod 755 launch_wrapper.sh; chmod 775 .
-
 
 # above provides the configured platform
 # the war is copied later -- TBD
 # COPY jdbc-query.war /opt/webserver/webapps/ROOT.war
 
 USER jboss
-CMD /usr/local/src/launch_wrapper.sh
+CMD /opt/webserver/bin/launch.sh
