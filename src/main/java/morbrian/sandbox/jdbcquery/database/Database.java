@@ -22,7 +22,6 @@ import java.util.List;
   @Resource(mappedName = "java:comp/env/ObjectDS") DataSource objectSource;
 
   Connection connection;
-  Connection objConnection;
 
   @Inject private Logger logger;
 
@@ -35,15 +34,19 @@ import java.util.List;
   }
 
   public NamesAndRecords fetchData(String query) {
-    if (objConnection != null) {
-      fetchData(query, objConnection);
+    if (objectSource != null) {
+      try {
+        fetchData(query, objectSource.getConnection());
+      } catch(SQLException exc) {
+        logger.error("failed to get object connection", exc);
+      }
     } else {
       logger.error("Object connection is null");
     }
     try {
       return fetchData(query, getConnection());
     } catch(SQLException exc) {
-      logger.error("failed to get connection", exc);
+      logger.error("failed to get data connection", exc);
       return null;
     }
   }
