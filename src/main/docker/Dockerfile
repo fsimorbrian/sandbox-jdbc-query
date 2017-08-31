@@ -15,11 +15,11 @@ RUN curl -LO http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4
 
 # configure tomcat
 WORKDIR /opt/webserver
+COPY setenv.sh bin/
 RUN rm -Rf webapps/*; \
     mkdir -p conf/Catalina/localhost; \
-    chmod 775 conf/Catalina/localhost; \
-    COPY setenv.sh bin/; \
-    chmod 775 bin/setenv.sh
+    chmod 770 conf/Catalina/localhost; \
+    chmod 770 bin/setenv.sh
 
 WORKDIR /usr/local/src
 COPY ROOT.xml ROOT.xml
