@@ -17,9 +17,9 @@ import java.util.List;
  */
 @Stateless public class Database {
 
-  @Resource(mappedName = "java:/comp/env/jdbc/DocumentDS") DataSource dataSource;
+  @Resource(mappedName = "DocumentDS") DataSource dataSource;
 
-  @Resource(mappedName = "java:/comp/env/jdbc/ObjectDS") DataSource objectSource;
+  @Resource(mappedName = "ObjectDS") DataSource objectSource;
 
   Connection connection;
   Connection objConnection;
