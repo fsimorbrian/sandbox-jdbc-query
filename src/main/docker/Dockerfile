@@ -18,7 +18,8 @@ WORKDIR /opt/webserver
 RUN rm -Rf webapps/*; \
     mkdir -p conf/Catalina/localhost; \
     chmod 775 conf/Catalina/localhost; \
-    COPY setenv.sh bin/
+    COPY setenv.sh bin/; \
+    chmod 775 bin/setenv.sh
 
 WORKDIR /usr/local/src
 COPY ROOT.xml ROOT.xml
